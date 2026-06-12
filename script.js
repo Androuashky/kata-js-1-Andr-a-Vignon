@@ -37,9 +37,27 @@ const divRecommandations = document.getElementById("recommandations")
 //   "brouillard"                      → "🌫️"
 //   autre valeur                      → "🌡️"
 
+
+
 const choisirEmoji = (conditions, temperature) => {
-  // Écris ton code ici
+  if (conditions === "trop chaud" && temperature > 40) {
+    return "🌡️";
+  } else if (conditions === "ensoleille") {
+    return "☀️";
+  } else if (conditions === "nuageux") {
+    return "⛅";
+  } else if (conditions === "pluvieux") {
+    return "🌧️";
+  } else if (conditions === "orageux") {
+    return "⛈️";
+  } else if (conditions === "neige") {
+    return "❄️";
+  } else if (conditions === "brouillard") {
+    return "🌫️";
+  }
 }
+
+console.log(choisirEmoji("trop chaud",41))
 
 
 // ── TODO : decrireMeteo ──────────────────────
@@ -57,8 +75,32 @@ const choisirEmoji = (conditions, temperature) => {
 // Exemple : decrireMeteo("pluvieux", 8) → "Temps froid et pluvieux"
 
 const decrireMeteo = (conditions, temperature) => {
-  // Écris ton code ici
+  let description
+
+  if (temperature <0) {
+    description = "Temps glacial"
+  } else if (temperature < 10) {
+    description = "Temps froid";
+  } else if (temperature < 20) {
+    description = "Temps frais";
+  } else if (temperature < 30) {
+    description = "Temps agréable";
+  } else {
+    description = "Temps chaud";
+  }
+
+  if (conditions === "pluvieux" || conditions === "orageux") {
+    description = description + " et pluvieux";
+  } else if (conditions === "neige") {
+    description = description + " et enneigé";
+  } else if (conditions === "brouillard") {
+    description = description + " et brumeux";
+  }
+
+  return description;
 }
+
+console.log(decrireMeteo("pluvieux",8))
 
 
 // ── TODO : recommanderTenue ──────────────────
@@ -82,8 +124,32 @@ const decrireMeteo = (conditions, temperature) => {
 //   et température > 20        → ajouter { icone: "🕶️", texte: "Pense à la crème solaire" }
 
 const recommanderTenue = (conditions, temperature) => {
-  // Écris ton code ici — retourne un tableau []
+  let habits = []
+
+  if (temperature <0) {
+    habits = "🧥 Manteau d'hiver indispensable"
+  } else if (temperature < 10) {
+    habits = "🧥 Prends un manteau";
+  } else if (temperature < 20) {
+    habits = "🧣 Une veste suffira";
+  } else if (temperature >= 30) {
+    habits = "👕 Habits légers recommandés" ;
+  } 
+
+  if (conditions === "pluvieux") {
+    habits = habits + "☂️ N'oublie pas ton parapluie" ;} 
+  if (conditions === "orageux") {
+    habits = habits + "⚠️ Évite les zones exposées";} 
+  if (conditions === "neige") {
+    habits = habits + "👢 Préfère des bottes imperméables" ;} 
+  if (conditions === "ensoleille" || conditions === temperature>20) {
+    habits = habits + "🕶️ Pense à la crème solaire" ;} 
+
+
+  return habits;
 }
+
+console.log(recommanderTenue("neige",3))
 
 
 // ── Affichage du résultat ────────────────────
