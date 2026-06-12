@@ -194,3 +194,7 @@ btnAnalyser.addEventListener("click", () => {
 
   afficherResultat(temperature, conditions)
 })
+
+
+//question 1: on veut que le programme passe toutes les possibilités sans conditions que la première fonctionne ou pas
+//question 2 : cela m'affiche temps agréable -  28°C ensoleillé 
